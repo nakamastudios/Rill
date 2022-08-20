@@ -1,5 +1,3 @@
-const RillContractAddress = 'TCcPwEQJTH4hkG5xTYmj7EpNdtqhHD3ZMT';
-// let rillContract: RillContract;
 let rillContract: {
     methods: RillContract
 };
@@ -69,16 +67,18 @@ export async function assignPlayersToTeam() {
 export async function placeBounty() {
     let tournamentId = 1;
     let playerAddress = '0x389d212B12618dbDF4B1Ff5c4317DB5E096f954E';
-    let amount = 0.05 * 1000000;
+    let amount = '50000000000000000';
 
     const result = rillContract.methods.placeBounty(tournamentId, playerAddress, amount).send({
-        feeLimit: 100_000_000,
-        callValue: amount,
+        value: amount,
         // shouldPollResponse: true,
         from: account
+    }).then(function(receipt){
+        // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
+        console.log(receipt);
+        alert('Bounty placed!');
     });
 
-    alert('Bounty placed!');
 
     return result;
 }

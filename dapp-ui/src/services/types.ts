@@ -1,5 +1,5 @@
 interface Callback {
-    send: (data: any) => void;
+    send: (data: any) => Promise<null>;
 }
 interface Variable {
     call: () => number;
@@ -40,7 +40,7 @@ interface RillContract {
     placeBounty: (
         _tournamentId: number,
         _player: string,
-        _amount: number
+        _amount: string
     ) => Callback;
     collectBounty: (
         _bountyId: number,

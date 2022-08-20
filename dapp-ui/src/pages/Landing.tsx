@@ -28,8 +28,8 @@ export function Landing() {
       const deployedNetwork = RillContract.networks[networkId];
       const instance = new web3.eth.Contract(
         RillContract.abi,
-        // deployedNetwork && deployedNetwork.address
-        '0xbbB0127a90C6f7F14a9Fa48AE03489cB03e63E94'
+        deployedNetwork && deployedNetwork.address
+        // '0xe95357Ae5667488F671Cca3348B1B5dd5b210009'
       );
 
       // Set web3, accounts, and contract to the state, and then proceed with an

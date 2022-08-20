@@ -168,7 +168,7 @@ contract Rill is Owner {
         tournament.ongoing = false;
 
         for (uint256 i = 0; i < winners.length; i++) {
-            _sendTRX(winners[i], tournament.prize[i]);
+            _sendTokens(winners[i], tournament.prize[i]);
         }
 
         emit EndTournament(_tournamentId);
@@ -267,7 +267,7 @@ contract Rill is Owner {
         bounty.collected = true;
         bounty.collector = _collector;
 
-        _sendTRX(_collector, bounty.amount * 1000000);
+        _sendTokens(_collector, bounty.amount);
 
         emit BountyCollected(_bountyId, _collector);
 
@@ -275,9 +275,9 @@ contract Rill is Owner {
     }
 
     /**
-     * @dev Send TRX
+     * @dev Send tokens
      */
-    function _sendTRX(address receiver, uint256 value) internal {
+    function _sendTokens(address receiver, uint256 value) internal {
         payable(address(uint160(receiver))).transfer(value);
     }
 
