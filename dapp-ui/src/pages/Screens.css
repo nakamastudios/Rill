@@ -1,0 +1,90 @@
+main {
+    background-size: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-repeat: no-repeat;
+}
+
+main.landing {
+    background-image: url('../static/images/landing_m.png');
+}
+
+main.dashboard {
+    background-image: url('../static/images/dashboard.png');
+}
+
+main.events {
+    background-image: url('../static/images/events.png');
+}
+
+main.event {
+    background-image: url('../static/images/event.png');
+}
+
+main.create-event {
+    background-image: url('../static/images/create_event.png');
+}
+
+@media screen and (min-width: 1080px) {
+    main {
+        width: 1080px;
+        height: 4580px;
+    }
+
+    main a {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 50px;
+        right: 50px;
+        cursor: pointer;
+        background-color: red;
+        /* background-color: none; */
+    }
+
+    main.landing {
+        background-image: url('../static/images/landing.png');
+    }
+
+    main.landing a {
+        width: 130px;
+        height: 50px;
+        top: 50px;
+        right: 60px;
+    }
+
+    main.dashboard a {
+        width: 100px;
+        height: 80px;
+        top: 250px;
+        left: 0px;
+    }
+
+    main.events a:nth-child(1) {
+        width: 150px;
+        height: 50px;
+        top: 400px;
+        left: 150px;
+    }
+
+    main.events a:nth-child(2) {
+        width: 910px;
+        height: 270px;
+        top: 640px;
+        left: 140px;
+    }
+
+    main.event a {
+        width: 130px;
+        height: 90px;
+        top: 630px;
+        right: 80px;
+    }
+
+    main.create-event a {
+        width: 150px;
+        height: 50px;
+        top: 1190px;
+        right: 20px
+    }
+}

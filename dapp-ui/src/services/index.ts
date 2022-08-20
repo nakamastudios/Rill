@@ -1,7 +1,40 @@
+import getWeb3 from "./getWeb3";
+import RillContract from "../contracts/Rill.json";
+
 let rillContract: {
     methods: RillContract
 };
 let account: any;
+
+
+export async function initialize() {
+    let account = null;
+
+    try {
+        const web3 = await getWeb3();
+        const accounts = await web3.eth.getAccounts();
+
+        const networkId = await web3.eth.net.getId();
+        // @ts-ignore
+        const deployedNetwork = RillContract.networks[networkId];
+        const instance = new web3.eth.Contract(
+            RillContract.abi,
+            deployedNetwork && deployedNetwork.address
+        );
+
+        setRillContract(instance);
+        setAccount(accounts[0]);
+        account = accounts[0];
+    } catch (error) {
+        // Catch any errors for any of the above operations.
+        alert(
+            `Failed to load web3, accounts, or contract. Check console for details.`
+        );
+        console.error(error);
+    }
+
+    return account;
+}
 
 export async function setRillContract(contract: any) {
     rillContract = contract;
@@ -73,7 +106,7 @@ export async function placeBounty() {
         value: amount,
         // shouldPollResponse: true,
         from: account
-    }).then(function(receipt){
+    }).then(function (receipt) {
         // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
         console.log(receipt);
         alert('Bounty placed!');
