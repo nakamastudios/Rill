@@ -38,8 +38,8 @@ main.create-event {
         top: 50px;
         right: 50px;
         cursor: pointer;
-        background-color: red;
-        /* background-color: none; */
+        /* background-color: red; */
+        background-color: none;
     }
 
     main.landing {
